@@ -15,7 +15,8 @@ pub mod sync;
 pub use error::CoreError;
 pub use ids::{
     BranchId, BusinessId, CashMovementId, CashSessionId, CategoryId, CustomerId, DeviceId,
-    OperationId, PaymentId, ProductId, PurchaseId, SaleId, StockMovementId, SupplierId, UserId,
+    OperationId, PaymentId, PaymentMethodId, ProductId, PurchaseId, SaleId, StockMovementId,
+    SupplierId, TaxRateId, UnitId, UserId,
 };
 pub use money::{Currency, Money};
 pub use sync::{Operation, OperationKind, SyncCursor};

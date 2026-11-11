@@ -102,6 +102,18 @@ define_id!(
     CategoryId
 );
 define_id!(
+    /// Unit of measure identifier.
+    UnitId
+);
+define_id!(
+    /// Payment method identifier.
+    PaymentMethodId
+);
+define_id!(
+    /// Tax rate identifier.
+    TaxRateId
+);
+define_id!(
     /// Supplier identifier.
     SupplierId
 );

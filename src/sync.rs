@@ -38,11 +38,14 @@ macro_rules! operation_kinds {
 }
 
 operation_kinds! {
+    BusinessConfigured => "business_configured",
     SaleCreated => "sale_created",
     SaleCancelled => "sale_cancelled",
     PaymentRecorded => "payment_recorded",
     StockMoved => "stock_moved",
     PurchaseRecorded => "purchase_recorded",
+    CategoryUpserted => "category_upserted",
+    UnitUpserted => "unit_upserted",
     ProductUpserted => "product_upserted",
     ProductArchived => "product_archived",
     PriceChanged => "price_changed",
@@ -207,11 +210,14 @@ mod tests {
     #[test]
     fn operation_kind_names_match_serde() {
         let kinds = [
+            OperationKind::BusinessConfigured,
             OperationKind::SaleCreated,
             OperationKind::SaleCancelled,
             OperationKind::PaymentRecorded,
             OperationKind::StockMoved,
             OperationKind::PurchaseRecorded,
+            OperationKind::CategoryUpserted,
+            OperationKind::UnitUpserted,
             OperationKind::ProductUpserted,
             OperationKind::ProductArchived,
             OperationKind::PriceChanged,

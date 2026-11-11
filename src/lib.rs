@@ -1,12 +1,11 @@
-//! Núcleo compartido de Nexo.
+//! Shared core for Nexo.
 //!
-//! Esta librería contiene los tipos que deben hablar el mismo idioma en la
-//! desktop y en el servidor: identificadores, dinero, operaciones de
-//! sincronización y cursores.
+//! This library contains the types that must speak the same language in the
+//! desktop and the server: identifiers, money, synchronization operations, and
+//! cursors.
 //!
-//! `nexo-core` es un proyecto independiente. No es un workspace, no contiene
-//! lógica de UI ni de base de datos, y no depende de `nexo-desktop` ni de
-//! `nexo-server`.
+//! `nexo-core` is an independent project. It is not a workspace, contains no UI
+//! or database logic, and does not depend on `nexo-desktop` or `nexo-server`.
 
 pub mod error;
 pub mod ids;

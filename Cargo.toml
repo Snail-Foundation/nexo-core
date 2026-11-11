@@ -3,7 +3,7 @@ name = "nexo-core"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
-description = "Dominio y protocolo de sincronización compartidos de Nexo"
+description = "Shared domain and synchronization protocol for Nexo"
 license = "MIT"
 publish = false
 

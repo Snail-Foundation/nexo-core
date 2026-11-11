@@ -15,27 +15,27 @@ macro_rules! define_id {
         pub struct $name(Uuid);
 
         impl $name {
-            /// Genera un identificador UUIDv7 ordenable por tiempo.
+            /// Generates a time-ordered UUIDv7 identifier.
             pub fn new() -> Self {
                 Self(Uuid::now_v7())
             }
 
-            /// Envuelve un UUID existente.
+            /// Wraps an existing UUID.
             pub fn from_uuid(value: Uuid) -> Self {
                 Self(value)
             }
 
-            /// Devuelve el UUID subyacente.
+            /// Returns the underlying UUID.
             pub fn as_uuid(&self) -> &Uuid {
                 &self.0
             }
 
-            /// Consume el identificador y devuelve el UUID.
+            /// Consumes the identifier and returns the UUID.
             pub fn into_uuid(self) -> Uuid {
                 self.0
             }
 
-            /// Indica si el identificador es el UUID nulo.
+            /// Returns true if the identifier is the nil UUID.
             pub fn is_nil(&self) -> bool {
                 self.0.is_nil()
             }
@@ -78,63 +78,63 @@ macro_rules! define_id {
 }
 
 define_id!(
-    /// Identificador del negocio.
+    /// Business identifier.
     BusinessId
 );
 define_id!(
-    /// Identificador de una sucursal.
+    /// Branch identifier.
     BranchId
 );
 define_id!(
-    /// Identificador de un dispositivo.
+    /// Device identifier.
     DeviceId
 );
 define_id!(
-    /// Identificador de un usuario.
+    /// User identifier.
     UserId
 );
 define_id!(
-    /// Identificador de un producto.
+    /// Product identifier.
     ProductId
 );
 define_id!(
-    /// Identificador de una categoría.
+    /// Category identifier.
     CategoryId
 );
 define_id!(
-    /// Identificador de un proveedor.
+    /// Supplier identifier.
     SupplierId
 );
 define_id!(
-    /// Identificador de una compra.
+    /// Purchase identifier.
     PurchaseId
 );
 define_id!(
-    /// Identificador de una venta.
+    /// Sale identifier.
     SaleId
 );
 define_id!(
-    /// Identificador de un pago.
+    /// Payment identifier.
     PaymentId
 );
 define_id!(
-    /// Identificador de un movimiento de inventario.
+    /// Inventory movement identifier.
     StockMovementId
 );
 define_id!(
-    /// Identificador de una sesión de caja.
+    /// Cash session identifier.
     CashSessionId
 );
 define_id!(
-    /// Identificador de un movimiento de caja.
+    /// Cash movement identifier.
     CashMovementId
 );
 define_id!(
-    /// Identificador de un cliente.
+    /// Customer identifier.
     CustomerId
 );
 define_id!(
-    /// Identificador único de una operación de sincronización.
+    /// Unique identifier for a synchronization operation.
     OperationId
 );
 
@@ -154,6 +154,6 @@ mod tests {
 
     #[test]
     fn invalid_ids_are_rejected() {
-        assert!("no-es-un-uuid".parse::<DeviceId>().is_err());
+        assert!("not-a-uuid".parse::<DeviceId>().is_err());
     }
 }

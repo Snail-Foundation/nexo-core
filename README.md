@@ -1,32 +1,33 @@
 # nexo-core
 
-Núcleo compartido de **Nexo**: tipos de dominio y protocolo de sincronización
-que usan la desktop y el servidor.
+Shared core for **Nexo**: domain types and the synchronization protocol used by
+the desktop and the server.
 
-Este es un **proyecto independiente**. No es un workspace, no contiene UI, no
-accede a bases de datos y no depende de `nexo-desktop` ni de `nexo-server`.
+This is an **independent project**. It is not a workspace, does not contain UI,
+does not access databases, and does not depend on `nexo-desktop` or
+`nexo-server`.
 
-## Contenido
+## Contents
 
-| Módulo | Qué aporta |
+| Module | Purpose |
 |---|---|
-| `ids` | Identificadores tipados basados en UUIDv7 |
-| `money` | Montos en unidad mínima y monedas ISO 4217 |
-| `sync` | Operaciones append-only, tipos de operación y cursores |
-| `error` | Errores de validación compartidos |
+| `ids` | Typed identifiers based on UUIDv7 |
+| `money` | Minor-unit amounts and ISO 4217 currencies |
+| `sync` | Append-only operations, operation kinds, and cursors |
+| `error` | Shared validation errors |
 
-## Uso
+## Usage
 
-Desde otro proyecto Rust, agrégalo como dependencia. Mientras los proyectos
-viven en el mismo directorio de trabajo:
+From another Rust project, add it as a dependency. While the projects live in
+the same working directory:
 
 ```toml
 [dependencies]
 nexo-core = { path = "../nexo-core" }
 ```
 
-Cuando `nexo-core` tenga repositorio remoto, se puede consumir por Git o por
-versión publicada.
+Once `nexo-core` has a remote repository, it can be consumed via Git or a
+published release.
 
 ```rust
 use nexo_core::{DeviceId, Operation, OperationKind, Uuid};
@@ -44,7 +45,7 @@ let operation = Operation::new(
 operation.validate().unwrap();
 ```
 
-## Desarrollo
+## Development
 
 ```sh
 cargo fmt
@@ -52,6 +53,6 @@ cargo test
 cargo clippy --all-targets
 ```
 
-## Licencia
+## License
 
-MIT. Ver [`LICENSE`](./LICENSE).
+MIT. See [`LICENSE`](./LICENSE).

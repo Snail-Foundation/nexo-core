@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::error::CoreError;
 
-/// Código de moneda ISO 4217 en mayúsculas (por ejemplo `USD` o `VES`).
+/// ISO 4217 currency code in uppercase (for example `USD` or `VES`).
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[serde(transparent)]
 pub struct Currency(String);
@@ -13,7 +13,7 @@ impl Currency {
     pub const USD_CODE: &'static str = "USD";
     pub const VES_CODE: &'static str = "VES";
 
-    /// Crea una moneda validando el formato de tres letras.
+    /// Creates a currency and validates the three-letter format.
     pub fn new(code: impl Into<String>) -> Result<Self, CoreError> {
         let code = code.into().to_ascii_uppercase();
 
@@ -43,10 +43,10 @@ impl fmt::Display for Currency {
     }
 }
 
-/// Monto expresado en la unidad mínima de una moneda.
+/// Amount expressed in a currency's minor unit.
 ///
-/// Por ejemplo, `Money::usd(1250)` representa 12,50 USD. Se usa un entero para
-/// evitar errores de punto flotante en ventas, pagos y arqueos.
+/// For example, `Money::usd(1250)` represents USD 12.50. An integer is used to
+/// avoid floating-point errors in sales, payments, and cash counts.
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub struct Money {
     minor_units: i64,
@@ -89,24 +89,27 @@ impl Money {
         self.minor_units < 0
     }
 
+    /// Adds two amounts, returning an error on currency mismatch or overflow.
     pub fn checked_add(&self, other: &Self) -> Result<Self, CoreError> {
         self.ensure_same_currency(other)?;
 
         let minor_units = self
             .minor_units
             .checked_add(other.minor_units)
-            .ok_or_else(|| CoreError::InvalidAmount("desbordamiento al sumar".to_owned()))?;
+            .ok_or_else(|| CoreError::InvalidAmount("overflow while adding".to_owned()))?;
 
         Ok(Self::new(minor_units, self.currency.clone()))
     }
 
+    /// Subtracts two amounts, returning an error on currency mismatch or
+    /// overflow.
     pub fn checked_sub(&self, other: &Self) -> Result<Self, CoreError> {
         self.ensure_same_currency(other)?;
 
         let minor_units = self
             .minor_units
             .checked_sub(other.minor_units)
-            .ok_or_else(|| CoreError::InvalidAmount("desbordamiento al restar".to_owned()))?;
+            .ok_or_else(|| CoreError::InvalidAmount("overflow while subtracting".to_owned()))?;
 
         Ok(Self::new(minor_units, self.currency.clone()))
     }
@@ -114,7 +117,7 @@ impl Money {
     fn ensure_same_currency(&self, other: &Self) -> Result<(), CoreError> {
         if self.currency != other.currency {
             return Err(CoreError::InvalidAmount(format!(
-                "no se pueden operar montos en {} y {}",
+                "cannot operate on amounts in {} and {}",
                 self.currency, other.currency
             )));
         }

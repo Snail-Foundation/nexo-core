@@ -1,17 +1,17 @@
 use thiserror::Error;
 
-/// Errores de validación del núcleo.
+/// Core validation errors.
 #[derive(Debug, Clone, PartialEq, Eq, Error)]
 pub enum CoreError {
-    #[error("identificador inválido: {0}")]
+    #[error("invalid identifier: {0}")]
     InvalidId(String),
 
-    #[error("moneda inválida: {0}")]
+    #[error("invalid currency: {0}")]
     InvalidCurrency(String),
 
-    #[error("monto inválido: {0}")]
+    #[error("invalid amount: {0}")]
     InvalidAmount(String),
 
-    #[error("operación inválida: {0}")]
+    #[error("invalid operation: {0}")]
     InvalidOperation(String),
 }

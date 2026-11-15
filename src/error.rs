@@ -14,4 +14,10 @@ pub enum CoreError {
 
     #[error("invalid operation: {0}")]
     InvalidOperation(String),
+
+    #[error("invalid status: {0}")]
+    InvalidStatus(String),
+
+    #[error("invalid tax rate: {0}")]
+    InvalidTaxRate(String),
 }

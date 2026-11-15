@@ -146,6 +146,30 @@ define_id!(
     CustomerId
 );
 define_id!(
+    /// Menu category identifier.
+    MenuCategoryId
+);
+define_id!(
+    /// Menu item identifier.
+    MenuItemId
+);
+define_id!(
+    /// Dining table identifier.
+    DiningTableId
+);
+define_id!(
+    /// Order identifier.
+    OrderId
+);
+define_id!(
+    /// Order line identifier.
+    OrderLineId
+);
+define_id!(
+    /// Order event identifier.
+    OrderEventId
+);
+define_id!(
     /// Unique identifier for a synchronization operation.
     OperationId
 );

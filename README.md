@@ -13,6 +13,7 @@ does not access databases, and does not depend on `nexo-desktop` or
 |---|---|
 | `ids` | Typed identifiers based on UUIDv7 |
 | `money` | Minor-unit amounts and ISO 4217 currencies |
+| `restaurant` | Order types, order and line statuses, and the optional global IVA |
 | `sync` | Append-only operations, operation kinds, and cursors |
 | `error` | Shared validation errors |
 

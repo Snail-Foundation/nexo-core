@@ -10,14 +10,17 @@
 pub mod error;
 pub mod ids;
 pub mod money;
+pub mod restaurant;
 pub mod sync;
 
 pub use error::CoreError;
 pub use ids::{
     BranchId, BusinessId, CashMovementId, CashSessionId, CategoryId, CustomerId, DeviceId,
-    OperationId, PaymentId, PaymentMethodId, ProductId, PurchaseId, SaleId, StockMovementId,
-    SupplierId, TaxRateId, UnitId, UserId,
+    DiningTableId, MenuCategoryId, MenuItemId, OperationId, OrderEventId, OrderId, OrderLineId,
+    PaymentId, PaymentMethodId, ProductId, PurchaseId, SaleId, StockMovementId, SupplierId,
+    TaxRateId, UnitId, UserId,
 };
 pub use money::{Currency, Money};
+pub use restaurant::{OrderLineStatus, OrderStatus, OrderType, TaxRate};
 pub use sync::{Operation, OperationKind, SyncCursor};
 pub use uuid::Uuid;

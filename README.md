@@ -1,7 +1,7 @@
 # nexo-core
 
 Shared core for **Nexo**: domain types and the synchronization protocol used by
-the desktop and the server.
+the Nexo server and the archived desktop clients.
 
 This is an **independent project**. It is not a workspace, does not contain UI,
 does not access databases, and does not depend on `nexo-desktop` or
@@ -19,16 +19,32 @@ does not access databases, and does not depend on `nexo-desktop` or
 
 ## Usage
 
-From another Rust project, add it as a dependency. While the projects live in
-the same working directory:
+From another Rust project, add it as a dependency.
+
+Outside the Snail workspace, use the Git repository:
+
+```toml
+[dependencies]
+nexo-core = { git = "https://github.com/Snail-Foundation/nexo-core.git" }
+```
+
+Inside the Snail workspace, where the projects are cloned side by side, use the
+local path:
 
 ```toml
 [dependencies]
 nexo-core = { path = "../nexo-core" }
 ```
 
-Once `nexo-core` has a remote repository, it can be consumed via Git or a
-published release.
+The crate is not published on crates.io (`publish = false`). The server and the
+archived desktop projects use the local path form, so clone `nexo-core` next to
+them before building:
+
+```sh
+git clone https://github.com/Snail-Foundation/nexo-core.git
+git clone https://github.com/Snail-Foundation/nexo-server.git
+# nexo-core and nexo-server must share the same parent directory
+```
 
 ```rust
 use nexo_core::{DeviceId, Operation, OperationKind, Uuid};
